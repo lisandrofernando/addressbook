@@ -1,8 +1,8 @@
 FROM maven:3.8.4-openjdk-8 AS build
 WORKDIR /app
-COPY addressbook/pom.xml .
+COPY pom.xml .
 RUN mvn dependency:go-offline
-COPY addressbook/src ./src
+COPY src ./src
 RUN mvn clean package -DskipTests
 
 FROM tomcat:8.5-jre8-alpine
